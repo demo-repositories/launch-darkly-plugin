@@ -15,6 +15,13 @@ export const author = defineType({
       validation: (Rule) => Rule.required().error("Author name is required"),
     }),
     defineField({
+      name: "newName",
+      type: "experimentString",
+      title: "New Name",
+      description:
+        "The full name of the person who wrote the content to be used in a/b test",
+    }),
+    defineField({
       name: "position",
       type: "string",
       title: "Position",
@@ -23,13 +30,10 @@ export const author = defineType({
     }),
     defineField({
       name: "image",
-      type: "image",
+      type: "experimentImage",
       title: "Image",
       description:
         "A photo of the author that will appear next to their articles",
-      options: {
-        hotspot: true,
-      },
     }),
     defineField({
       name: "bio",

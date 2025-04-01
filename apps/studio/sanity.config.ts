@@ -1,4 +1,5 @@
 import { assist } from "@sanity/assist";
+import { launchDarklyFieldLevel } from "@sanity/personalization-plugin";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { presentationTool } from "sanity/presentation";
@@ -49,6 +50,10 @@ export default defineConfig({
     media(),
     presentationUrl(),
     unsplashImageAsset(),
+    launchDarklyFieldLevel({
+      fields: ["string", "image"],
+      projectKey: "default",
+    }),
   ],
 
   form: {
