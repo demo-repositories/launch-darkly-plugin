@@ -57,11 +57,12 @@ export const author = defineType({
       const bioPreview = bio
         ? `📝 ${bio.substring(0, 20)}${bio.length > 20 ? "..." : ""}`
         : "📝 No bio yet";
+      const newMedia = media?.default ?? "";
 
       return {
         title: `✍️ ${title || "Unnamed Author"}`,
         subtitle: `${positionInfo} | ${bioPreview}`,
-        media,
+        media: newMedia,
       };
     },
   },

@@ -21,6 +21,7 @@ A modern, full-stack monorepo template built with Next.js App Router, Sanity CMS
 - Blog system with rich text editor
 - Table of contents generation
 - Responsive layouts
+- Ability to Experiments on Authors name and image using LaunchDarkly
 
 ### Content Management (Studio)
 
@@ -30,27 +31,32 @@ A modern, full-stack monorepo template built with Next.js App Router, Sanity CMS
 - Structured content with schemas
 - Live preview capabilities
 - Asset management
+- LaunchDarkly a/b testing plugin
 
 ## Getting Started
 
 ### Installing the template
 
-#### 1. Initialize template with Sanity CLI
+#### 1a. Create github PAT (only whilst private repo)
+
+In order to create a template on a private repository you need to have a github PAT with read access to content on https://github.com/demo-repositories/launch-darkly-plugin [guide for creating PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+#### 1b. Initialize template with Sanity CLI
 
 Run the command in your Terminal to initialize this template on your local computer.
 
 See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
 ```shell
-npm create sanity@latest -- --template robotostudio/turbo-start-sanity
+npm create sanity@latest -- --template https://github.com/demo-repositories/launch-darkly-plugin --template-token {GITHUB_PAT}
 ```
 
-#### 2. Run Studio and Next.js app locally
+#### 2. Run pnpm dev
 
-Navigate to the template directory using `cd <your app name>`, and start the development servers by running the following command
+Start the development servers by running the following command
 
 ```shell
-pnpm run dev
+pnpm dev
 ```
 
 #### 3. Open the app and sign in to the Studio
@@ -76,6 +82,26 @@ When you initialize the template using the Sanity CLI, sample content is automat
 #### 3. Extending the Sanity schema
 
 The schemas for all document types are defined in the `studio/schemaTypes/documents` directory. You can [add more document types](https://www.sanity.io/docs/schema-types) to the schema to suit your needs.
+
+### Adding an experiment on Authors
+
+#### 1. Setup flags/experiments in LaunchDarkly
+
+The front end is setup to ruin with 2 feature flags named `image` and `name` these need to be created in LaunchDarkly.
+
+You will also need to generate an api key to use in teh studio and front end
+
+#### 2. Set LaunchDarkly api key
+
+Update your .env file in `/web` to set LAUNCHDARKLY_API_KEY= to teh value of your api key
+
+In the studio navigate to an authors document and you should be asked to supply your api key. This will be stored as a private value in the dataset using [Sanity Studio Secrets](https://github.com/sanity-io/sanity-studio-secrets)
+
+#### 3. Add experiments values
+
+On an auth document there are 2 fields that have been setup with the ability to add a/b test content `New Name` and `Image`
+
+If you want to add others see the [readme for the plugin](https://github.com/sanity-io/sanity-plugin-personalization/?tab=readme-ov-file#sanitypersonalization-plugin) or for [LaunchDarkly specifics](https://github.com/sanity-io/sanity-plugin-personalization/blob/launch-darkly/launchdarkly.md)
 
 ### Deploying your application and inviting editors
 

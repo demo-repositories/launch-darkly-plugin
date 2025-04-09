@@ -4,7 +4,7 @@ import type { QueryBlogIndexPageDataResult } from "@/lib/sanity/sanity.types";
 
 import { SanityImage } from "./sanity-image";
 
-type Blog = NonNullable<
+export type Blog = NonNullable<
   NonNullable<QueryBlogIndexPageDataResult>["blogs"]
 >[number];
 

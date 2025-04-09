@@ -38,9 +38,9 @@ const richTextFragment = /* groq */ `
 const blogAuthorFragment = /* groq */ `
   authors[0]->{
     _id,
-    name,
+    "name" : coalesce(newName.variants[experimentId == $nameFlag && variantId == $nameVariation][0].value, newName.default,name, ""),
     position,
-    ${imageFragment}
+    "image": coalesce(image.variants[experimentId == $imageFlag && variantId == $imageVariation][0].value, image.default,image, ""),
   }
 `;
 

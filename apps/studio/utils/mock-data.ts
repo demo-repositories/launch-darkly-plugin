@@ -357,10 +357,13 @@ export function generateMockAuthors(imagesStore: ImageStore) {
       position: faker.person.jobTitle(),
       bio: faker.person.bio(),
       image: {
-        _type: "image",
-        asset: {
-          _ref: image.id,
-          _type: "reference",
+        _type: "ExperimentImage",
+        default: {
+          _type: "image",
+          asset: {
+            _ref: image.id,
+            _type: "reference",
+          },
         },
       },
     };

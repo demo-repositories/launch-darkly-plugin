@@ -12,7 +12,8 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "type": "sanity schema extract --enforce-required-fields && sanity typegen generate",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "postinstall": "sanity exec scripts/create-data.ts --with-user-token"
   },
   "keywords": [
     "sanity"
@@ -21,7 +22,7 @@
     "@sanity/assist": "^3.2.0",
     "@sanity/icons": "^3.7.0",
     "@sanity/orderable-document-list": "^1.2.3",
-    "@sanity/personalization-plugin": "2.2.0-launch-darkly.1",
+    "@sanity/personalization-plugin": "2.3.0-launch-darkly.1",
     "@sanity/ui": "^2.15.8",
     "@sanity/vision": "^3.80.1",
     "lucide-react": "^0.483.0",
