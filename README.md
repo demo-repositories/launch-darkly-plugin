@@ -37,18 +37,14 @@ A modern, full-stack monorepo template built with Next.js App Router, Sanity CMS
 
 ### Installing the template
 
-#### 1a. Create github PAT (only whilst private repo)
-
-In order to create a template on a private repository you need to have a github PAT with read access to content on https://github.com/demo-repositories/launch-darkly-plugin [guide for creating PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-#### 1b. Initialize template with Sanity CLI
+#### 1. Initialize template with Sanity CLI
 
 Run the command in your Terminal to initialize this template on your local computer.
 
 See the documentation if you are [having issues with the CLI](https://www.sanity.io/help/cli-errors).
 
 ```shell
-npm create sanity@latest -- --template https://github.com/demo-repositories/launch-darkly-plugin --template-token {GITHUB_PAT}
+npm create sanity@latest -- --template https://github.com/demo-repositories/launch-darkly-plugin
 ```
 
 #### 2. Run pnpm dev
